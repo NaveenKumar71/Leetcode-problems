@@ -1,0 +1,27 @@
+class Solution {
+    public int missingInteger(int[] nums) {
+        int prefixSum=nums[0];
+        for(int i=1;i<nums.length;i++){
+            if(nums[i]==nums[i-1]+1)
+            {
+                prefixSum+=nums[i];
+            }
+            else 
+            {
+                break;
+            }
+        } 
+        Arrays.sort(nums);      // sorting operation for linear search
+        if(nums[nums.length-1]<prefixSum)
+        {
+            return prefixSum;
+        }
+        for(int i=0;i<nums.length;i++){
+            if(prefixSum==nums[i])
+            {
+                prefixSum++;         //search for the smallest integer x missing from nums 
+            }
+        }
+        return prefixSum;       
+    }
+}
