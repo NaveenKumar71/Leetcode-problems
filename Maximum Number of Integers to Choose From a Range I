@@ -1,0 +1,16 @@
+class Solution {
+    public int maxCount(int[] banned, int n, int maxSum) {
+        int sum=0,c=0;
+        Set<Integer> ban = new HashSet<>();
+        for (int num : banned) {
+            ban.add(num);
+        }
+        for(int i=1;i<=n;i++){
+            if(ban.contains(i)) continue;
+            if(sum+i>maxSum) break;
+            c++;
+            sum+=i;
+        }
+      return c;  
+    }
+}
