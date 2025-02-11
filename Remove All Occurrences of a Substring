@@ -1,0 +1,17 @@
+class Solution {
+    public String removeOccurrences(String s, String part) {
+        StringBuilder sb=new StringBuilder(s);
+        while(sb.length()>=part.length()){
+            int startIndex=sb.indexOf(part);
+            if(startIndex!=-1)
+            {
+                sb.delete(startIndex,startIndex+part.length());
+            }
+            else
+            {
+            break;
+            }
+        }
+       return sb.toString(); 
+    }
+}
