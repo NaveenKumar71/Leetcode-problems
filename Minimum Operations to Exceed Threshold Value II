@@ -1,0 +1,20 @@
+class Solution {
+    public int minOperations(int[] nums, int k) {
+        PriorityQueue<Long> pq = new PriorityQueue<>(); // For maintaining in ascending order
+        for (long i : nums) {
+            if (i < k)
+                pq.add(i); // only add elements which are less than k
+        }
+        int count = 0;
+        while (pq.size() >= 2)      //The loop runs only when there are two elements in the pq
+         {
+            long first = pq.poll();
+            long second = pq.poll();
+            long num = first * 2 + second;
+            if (num < k) 
+                pq.add(num);    //After operation also checking the elements less than k 
+            count++;       
+        }
+        return count + pq.size();
+    }
+}
