@@ -1,0 +1,19 @@
+class Solution {
+    public int numberOfSubstrings(String s) {
+        int count = 0, first = 0, last = 0, length = s.length();
+        int arr[] = new int[3];
+        while (last < length) {
+            char curr = s.charAt(last);
+            arr[curr - 'a']++;
+            while (arr[0] > 0 && arr[1] > 0 && arr[2] > 0) {
+                count += length - last;
+                char leftcurr = s.charAt(first);
+                arr[leftcurr - 'a']--;
+                first++;
+            }
+            last++;
+        }
+
+        return count;
+    }
+}
