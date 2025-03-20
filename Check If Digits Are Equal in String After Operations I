@@ -1,0 +1,16 @@
+class Solution {
+    public boolean hasSameDigits(String s) {
+        List<Integer> lst = new ArrayList<>();
+        for (char ch : s.toCharArray()) {
+            lst.add(ch - '0');
+        }
+        while (lst.size() > 2) {
+            List<Integer> lst1 = new ArrayList<>();
+            for (int i = 1; i < lst.size(); i++) {
+                lst1.add((lst.get(i - 1) + lst.get(i)) % 10);
+            }
+            lst = lst1;
+        }
+        return lst.get(0) == lst.get(1);
+    }
+}
