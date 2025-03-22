@@ -1,0 +1,19 @@
+class Solution {
+    public List<Integer> zigzagTraversal(int[][] grid) {
+        List<Integer> lst = new ArrayList<>();
+        for (int i = 0; i < grid.length; i++) {
+            if (i % 2 == 0) {
+                for (int j = 0; j < grid[0].length; j += 2) {
+                    lst.add(grid[i][j]);
+                }
+            } else {
+                for (int k = grid[0].length - 1; k >= 0; k--) {
+                    if (k % 2 != 0)
+                        lst.add(grid[i][k]);
+                }
+            }
+
+        }
+        return lst;
+    }
+}
