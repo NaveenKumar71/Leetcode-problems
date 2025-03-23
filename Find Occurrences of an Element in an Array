@@ -1,0 +1,24 @@
+class Solution {
+    public int[] occurrencesOfElement(int[] nums, int[] queries, int x) {
+        int[] ans = new int[queries.length];
+        int[] occ = new int[nums.length + 1];
+        Arrays.fill(ans, -1);
+        int count = 0;
+        for (int i = 0, oi = 1; i < nums.length; i++) {
+            if (nums[i] == x) {
+                count++;
+                occ[oi] = i;
+                oi++;
+            }
+        }
+        if (count == 0)
+            return ans;
+        for (int j = 0; j < queries.length; j++) {
+            if (count < queries[j])
+                continue;
+            else
+                ans[j] = occ[queries[j]];
+        }
+        return ans;
+    }
+}
