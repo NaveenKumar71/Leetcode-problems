@@ -1,0 +1,21 @@
+class Solution {
+    public boolean hasSpecialSubstring(String s, int k) {
+        if (s.length() == 1)
+            return true;
+        int ans = 1;
+        char ch = s.charAt(0);
+        for (int i = 1; i < s.length(); i++) {
+            if (s.charAt(i) == ch) {
+                ans++;
+            } else {
+                if (ans == k)
+                    return true;
+                else {
+                    ch = s.charAt(i);
+                    ans = 1;
+                }
+            }
+        }
+        return (ans == k);
+    }
+}
