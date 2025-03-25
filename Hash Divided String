@@ -1,0 +1,16 @@
+class Solution {
+    public String stringHash(String s, int k) {
+        StringBuilder res = new StringBuilder();
+        int sum = 0;
+        for (int i = 0; i < s.length(); i++) {
+            if ((i + 1) % k == 0) {
+                sum += s.charAt(i) - 'a';
+                res.append((char) ('a' + (sum % 26)));
+                sum = 0;
+            } else {
+                sum += s.charAt(i) - 'a';
+            }
+        }
+        return res.toString();
+    }
+}
