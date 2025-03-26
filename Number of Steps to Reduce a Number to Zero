@@ -1,0 +1,14 @@
+class Solution {
+    public int numberOfSteps(int num) {
+        if (num == 0)
+            return 0;
+        int c = 0;
+        while (num != 0) {
+            c++;
+            if ((num & 1) == 1)
+                c++;
+            num >>= 1;
+        }
+        return c - 1;
+    }
+}
