@@ -1,0 +1,20 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        if (nums.length == 0 || nums.length == 1)
+            return nums;
+        int left = 0, right = nums.length - 1;
+        while (left <= right) {
+            while (left <= right && nums[left] % 2 == 0)
+                left++; // Move left pointer until an odd number is found
+            while (left <= right && nums[right] % 2 != 0)
+                right--; // Move right pointer until an even number is found
+            // Swap only if left < right (ensuring valid positions)
+            if (left < right) {
+                int temp = nums[left];
+                nums[left] = nums[right];
+                nums[right] = temp;
+            }
+        }
+        return nums;
+    }
+}
