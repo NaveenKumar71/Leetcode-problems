@@ -1,0 +1,15 @@
+class Solution {
+    public List<String> splitWordsBySeparator(List<String> words, char separator) {
+        List<String> ans = new ArrayList<>();
+        String reg = "\\" + separator;
+        for (int i = 0; i < words.size(); i++) {
+            String arr[] = (words.get(i)).split(reg);
+            for (String str : arr) {
+                if (!str.isEmpty()) {
+                    ans.add(str);
+                }
+            }
+        }
+        return ans;
+    }
+}
