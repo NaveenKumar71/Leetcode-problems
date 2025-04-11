@@ -1,0 +1,21 @@
+class Solution {
+    public int countSymmetricIntegers(int low, int high) {
+        int sum1, sum2, c = 0;
+        for (int i = low; i <= high; i++) {
+            String str = String.valueOf(i);
+            int n = str.length();
+            if (n % 2 != 0)
+                continue;
+            int half = n / 2;
+            sum1 = 0;
+            sum2 = 0;
+            for (int j = 0; j < half; j++) {
+                sum1 += str.charAt(j);
+                sum2 += str.charAt(half + j);
+            }
+            if (sum1 == sum2)
+                c++;
+        }
+        return c;
+    }
+}
