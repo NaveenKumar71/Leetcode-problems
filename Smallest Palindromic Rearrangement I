@@ -1,0 +1,24 @@
+class Solution {
+    public String smallestPalindrome(String s) {
+        if (s.length() == 1)
+            return s;
+        HashMap<Character, Integer> map = new HashMap<>();
+        for (int i = 0; i < s.length(); i++) {
+            map.put(s.charAt(i), map.getOrDefault(s.charAt(i), 0) + 1);
+        }
+        StringBuilder half = new StringBuilder();
+        String middle = "";
+        for (char i = 'a'; i <= 'z'; i++) {
+            int count = map.getOrDefault(i, 0);
+            if (count % 2 != 0) {
+                middle = String.valueOf(i);
+                count--;
+            }
+            for (int j = 0; j < count / 2; j++) {
+                half.append(i);
+            }
+        }
+        String res = half.toString() + middle + half.reverse().toString();
+        return res;
+    }
+}©leetcode
