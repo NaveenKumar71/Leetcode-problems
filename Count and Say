@@ -1,0 +1,28 @@
+class Solution {
+    public String countAndSay(int n) {
+        if (n == 1)
+            return "1";
+        String s = "1";
+        while (--n > 0) {
+            s = mapper(s);
+        }
+        return s;
+    }
+
+    public String mapper(String s) {
+        StringBuilder str = new StringBuilder();
+        int c = 1;
+        char ch = s.charAt(0);
+        for (int i = 1; i < s.length(); i++) {
+            if (ch == s.charAt(i))
+                c++;
+            else {
+                str.append(c).append(ch);
+                ch = s.charAt(i);
+                c = 1;
+            }
+        }
+        str.append(c).append(ch);
+        return str.toString();
+    }
+}
