@@ -1,0 +1,16 @@
+class Solution {
+    public List<Integer> intersection(int[][] nums) {
+        List<Integer> ans = new ArrayList<>();
+        int[] arr = new int[1001];
+        int n = nums.length;
+        for (int i = 0; i < n; i++) {
+            for (int j = 0; j < nums[i].length; j++) {
+                arr[nums[i][j]]++;
+                if (i == n - 1 && arr[nums[i][j]] == n)
+                    ans.add(nums[i][j]);
+            }
+        }
+        Collections.sort(ans);
+        return ans;
+    }
+}
