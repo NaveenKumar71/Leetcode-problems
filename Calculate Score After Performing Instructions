@@ -1,0 +1,23 @@
+class Solution {
+    public long calculateScore(String[] instructions, int[] values) {
+        int n = instructions.length;
+        int[] vis = new int[n];
+        long score = 0;
+        for (int i = 0; i < n; i++) {
+            if (instructions[i].equals("add")) {
+                if (vis[i] == 0) {
+                    score += values[i];
+                    vis[i] = 1;
+                } else
+                    break;
+            } else {
+                vis[i] = 1;
+                i = i + values[i];
+                if (i >= n || i < 0 || vis[i] == 1)
+                    break;
+                i--;
+            }
+        }
+        return score;
+    }
+}
