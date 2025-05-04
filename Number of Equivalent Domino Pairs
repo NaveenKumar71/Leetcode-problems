@@ -1,0 +1,12 @@
+class Solution {
+    public int numEquivDominoPairs(int[][] dominoes) {
+        int arr[] = new int[100];
+        int ans = 0;
+        for (int[] num : dominoes) {
+            int val = num[0] < num[1] ? num[0] * 10 + num[1] : num[1] * 10 + num[0];
+            ans += arr[val];
+            arr[val]++;
+        }
+        return ans;
+    }
+}
