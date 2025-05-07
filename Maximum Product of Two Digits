@@ -1,0 +1,15 @@
+class Solution {
+    public int maxProduct(int n) {
+        if (n < 100)
+            return (n % 10) * (n / 10);
+        int max[] = new int[11];
+        int i = 0;
+        while (n != 0) {
+            max[i] = n % 10;
+            n /= 10;
+            i++;
+        }
+        Arrays.sort(max);
+        return max[9] * max[10];
+    }
+}
