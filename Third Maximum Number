@@ -1,0 +1,17 @@
+class Solution {
+    public int thirdMax(int[] nums) {
+        Arrays.sort(nums);
+        int tm = nums[nums.length - 1];
+        int ans = tm;
+        int j = 0;
+        for (int i = nums.length - 2; i >= 0; i--) {
+            if (j < 3 && nums[i] < tm) {
+                tm = nums[i];
+                j++;
+                if (j == 2)
+                    return tm;
+            }
+        }
+        return ans;
+    }
+}
