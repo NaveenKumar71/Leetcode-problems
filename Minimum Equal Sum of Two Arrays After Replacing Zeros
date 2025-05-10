@@ -1,0 +1,26 @@
+class Solution {
+    public long minSum(int[] nums1, int[] nums2) {
+        long minsum = 0;
+        long n1 = 0, n2 = 0;
+        boolean b1 = false;
+        boolean b2 = false;
+        for (int i : nums1) {
+            if (i == 0) {
+                n1 += 1;
+                b1 = true;
+            } else
+                n1 += i;
+        }
+        for (int i : nums2) {
+            if (i == 0) {
+                n2 += 1;
+                b2 = true;
+            } else
+                n2 += i;
+        }
+        if (n1 == n2)
+            return n1;
+        minsum = Math.max(n1, n2);
+        return (minsum == n1 && b2 == true || minsum == n2 && b1 == true) ? minsum : -1;
+    }
+}
