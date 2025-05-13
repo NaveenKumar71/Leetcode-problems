@@ -1,0 +1,16 @@
+class Solution {
+    public int arrangeCoins(int n) {
+        long low = 1, high = n, mid = 0;
+        while (low <= high) {
+            mid = (low + high) / 2;
+            long curr = (mid * (mid + 1)) / 2;
+            if (curr == n)
+                return (int) mid;
+            else if (curr < n)
+                low = mid + 1;
+            else
+                high = mid - 1;
+        }
+        return (int) high;
+    }
+}
