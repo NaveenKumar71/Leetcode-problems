@@ -1,0 +1,21 @@
+class Solution {
+    public int countSubstrings(String s) {
+        if (s.length() == 1)
+            return 1;
+        int c = 0;
+        for (int i = 0; i < s.length(); i++) {
+            c += checker(s, i, i, 0);
+            c += checker(s, i, i + 1, 0);
+        }
+        return c;
+    }
+
+    public int checker(String s, int left, int right, int c) {
+        while (left >= 0 && right < s.length() && s.charAt(left) == s.charAt(right)) {
+            c++;
+            left--;
+            right++;
+        }
+        return c;
+    }
+}
