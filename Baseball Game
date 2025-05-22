@@ -1,0 +1,21 @@
+class Solution {
+    public int calPoints(String[] operations) {
+        List<Integer> lst = new ArrayList<>();
+        for (int i = 0; i < operations.length; i++) {
+            char ch = operations[i].charAt(0);
+            int s = lst.size();
+            if (ch == 'C')
+                lst.remove(s - 1);
+            else if (ch == 'D')
+                lst.add(lst.get(s - 1) * 2);
+            else if (ch == '+')
+                lst.add(lst.get(s - 1) + lst.get(s - 2));
+            else
+                lst.add(Integer.parseInt(operations[i]));
+        }
+        int ans = 0;
+        for (int i = 0; i < lst.size(); i++)
+            ans += lst.get(i);
+        return ans;
+    }
+}
