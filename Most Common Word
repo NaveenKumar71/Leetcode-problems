@@ -1,0 +1,24 @@
+class Solution {
+    public String mostCommonWord(String paragraph, String[] banned) {
+        String[] str=paragraph.split("[\\W_]+");
+        Set<String> set=new HashSet<>(Arrays.asList(banned));
+        HashMap<String,Integer> map=new HashMap<>();
+        for(int i=0;i<str.length;i++){
+            String check=str[i].toLowerCase();
+            if(!set.contains(check))
+            map.put(check,map.getOrDefault(check,0)+1);
+            
+        }
+        int max=0;
+        String ans="";
+        for(String a:map.keySet()){
+            if(max<map.get(a)){
+                max=map.get(a);
+                ans=a;
+            }
+        }
+        return ans;
+
+        
+    }
+}
